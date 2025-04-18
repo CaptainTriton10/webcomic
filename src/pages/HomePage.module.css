@@ -1,0 +1,21 @@
+.headerImage {
+    width: 100%;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
+}
+
+.title {
+    position: absolute;
+    color: dimgrey;
+    width: 100vw;
+    text-align: center;
+    bottom: 40%;
+    font-size: 8rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+}

@@ -1,10 +1,19 @@
 import {StrictMode} from 'react'
 import {createRoot} from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import {createBrowserRouter, Navigate, RouterProvider} from "react-router";
+import HomePage from "./pages/HomePage.tsx";
+import ComicPage from "./pages/ComicPage.tsx";
+import NotFoundView from "./pages/NotFoundView.tsx";
+
+const router = createBrowserRouter([
+	{index: true, element: <Navigate to="/Home" replace/>},
+	{path: "/home", element: <HomePage/>},
+	{path: "/chapter/:id", element: <ComicPage/>},
+	{path: "*", element: <NotFoundView/>},
+]);
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
-		<App/>
+		<RouterProvider router={router}/>
 	</StrictMode>,
 )
