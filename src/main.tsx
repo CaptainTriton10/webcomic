@@ -6,14 +6,14 @@ import ComicPage from "./pages/ComicPage.tsx";
 import NotFoundView from "./pages/NotFoundView.tsx";
 
 const router = createBrowserRouter([
-	{index: true, element: <Navigate to="/Home" replace/>},
-	{path: "/home", element: <HomePage/>},
-	{path: "/chapter/:id", element: <ComicPage/>},
-	{path: "*", element: <NotFoundView/>},
+    {index: true, element: <Navigate to="/Home" replace/>},
+    {path: "/home", element: <HomePage/>},
+    {path: "/chapter/:id", element: <ComicPage/>},
+    {path: "*", element: <NotFoundView/>},
 ]);
 
 createRoot(document.getElementById('root')!).render(
-	<StrictMode>
-		<RouterProvider router={router}/>
-	</StrictMode>,
+    <StrictMode>
+        <RouterProvider router={router}/>
+    </StrictMode>,
 )
