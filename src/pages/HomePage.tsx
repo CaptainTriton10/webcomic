@@ -1,9 +1,18 @@
 import styles from "./HomePage.module.css";
 import Section from "../components/Section.tsx";
+import client from "./RedisClient.ts";
+
+function GetChapters() {
+    client.set("test", "asdfjkl;");
+}
 
 function HomePage() {
     const imgWidth = 3000;
     const imgHeight = 1200;
+    
+    console.log("Home page");
+
+    AddData("1234", "great password!");
 
     return (
         <div style={{backgroundColor: "black"}}>

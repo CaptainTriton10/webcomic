@@ -4,17 +4,19 @@ import styles from "./ComicPage.module.css"
 import Comic from "../components/Comic.tsx";
 
 function ComicPage() {
-    const {id}: never = useParams();
+    const {id} = useParams() as { id: string };
     const navigate = useNavigate();
 
-    const PreviousPage = () => {
-        navigate(`/chapter/${id - 1}`);
+    const thisPage = parseInt(id) ? parseInt(id) : 1;
+
+    const ToPreviousPage = () => {
+        navigate(`/chapter/${thisPage - 1}`);
     }
-    const Home = () => {
+    const ToHome = () => {
         navigate("/home");
     }
-    const NextPage = () => {
-        navigate(`/chapter/${1 + id}`);
+    const ToNextPage = () => {
+        navigate(`/chapter/${thisPage + 1}`);
     }
 
     if (id === "1") {
@@ -32,9 +34,9 @@ function ComicPage() {
                            alt="loss3.jpg"/>
                 </div>
                 <div className={styles.navigationBar}>
-                    <button onClick={PreviousPage}>Previous</button>
-                    <button onClick={Home}>Home</button>
-                    <button onClick={NextPage}>Next</button>
+                    <button onClick={ToPreviousPage}>Previous</button>
+                    <button onClick={test}>Home</button>
+                    <button onClick={ToNextPage}>Next</button>
                 </div>
             </>
         );
