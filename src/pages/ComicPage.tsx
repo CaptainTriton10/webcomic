@@ -35,7 +35,7 @@ function ComicPage() {
                 </div>
                 <div className={styles.navigationBar}>
                     <button onClick={ToPreviousPage}>Previous</button>
-                    <button onClick={test}>Home</button>
+                    <button onClick={ToHome}>Home</button>
                     <button onClick={ToNextPage}>Next</button>
                 </div>
             </>

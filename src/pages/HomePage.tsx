@@ -1,18 +1,27 @@
+import { useState, useEffect } from "react";
 import styles from "./HomePage.module.css";
 import Section from "../components/Section.tsx";
-import client from "./RedisClient.ts";
 
-function GetChapters() {
-    client.set("test", "asdfjkl;");
+async function GetAllChapters() {
+    const value = await fetch("http://localhost:3000/chapters/all", {
+        mode: "cors",
+        method: "GET"
+    });
+
+    const chapters = await value.json();
+
+    return chapters;
 }
 
 function HomePage() {
     const imgWidth = 3000;
     const imgHeight = 1200;
-    
-    console.log("Home page");
 
-    AddData("1234", "great password!");
+    const [chapters, setChapters] = useState(["No chapters here."]);
+
+    useEffect(() => {
+        GetAllChapters().then((chapters) => {setChapters(Object.keys(chapters))});
+    }, []);
 
     return (
         <div style={{backgroundColor: "black"}}>
@@ -24,8 +33,12 @@ function HomePage() {
                 <h1 className={styles.title}>sample text</h1>
             </div>
             <div className={styles.main}>
-                <Section></Section>
-                <Section></Section>
+                <Section>
+                    <h2><b>Chapters</b></h2>
+                    {chapters.map((chapter) => (
+                        <li key={chapter}>{chapter}</li>
+                    ))}
+                </Section>
             </div>
 
         </div>
