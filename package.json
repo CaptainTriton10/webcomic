@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "npx tsx src/main.tsx",
+    "start": "node dist/server.js",
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build && tsc -p tsconfig.node.json",
     "lint": "eslint .",
     "preview": "vite preview"
   },
