@@ -13,6 +13,23 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+.title2 {
+    font-size: 5rem;
+    color: lightgrey;
+}
+
+.chapter {
+    font-size: 2rem;
+    text-decoration: none !important;
+}
+
+.chapters {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    gap: 35px;
+}
+
 .main {
     display: flex;
     flex-direction: column;

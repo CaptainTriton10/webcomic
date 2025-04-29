@@ -16,12 +16,12 @@ const port = 3000;
 
 const client = new Redis({
     host: process.env.REDIS_HOST,
-    port: process.env.REDIS_PORT,
+    port: Number(process.env.REDIS_PORT),
     password: process.env.REDIS_PASSWORD
 });
 
 // Get all chapters
-app.get("/chapters/all", async (req, res) => {
+app.get("/chapters/all", async (_req, res) => {
     try {
         const keys = await client.keys("*");    
         res.json(keys);

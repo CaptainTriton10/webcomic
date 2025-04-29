@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "npx tsx src/main.tsx",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
