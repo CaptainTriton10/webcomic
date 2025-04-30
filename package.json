@@ -2,10 +2,8 @@
   "name": "webcomic",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "start": "node dist/src/server.js",
-    "backend": "node src/server.js",
     "dev": "vite",
     "build": "vite build && tsc -p tsconfig.node.json",
     "lint": "eslint .",
