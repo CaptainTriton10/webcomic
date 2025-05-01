@@ -1,9 +1,9 @@
 import {StrictMode} from 'react'
 import {createRoot} from 'react-dom/client'
 import {createBrowserRouter, Navigate, RouterProvider} from "react-router";
-import HomePage from "./pages/HomePage.tsx";
-import ComicPage from "./pages/ComicPage.tsx";
-import NotFoundView from "./pages/NotFoundView.tsx";
+import HomePage from "./pages/HomePage";
+import ComicPage from "./pages/ComicPage";
+import NotFoundView from "./pages/NotFoundView";
 
 const router = createBrowserRouter([
     {index: true, element: <Navigate to="/Home" replace/>},

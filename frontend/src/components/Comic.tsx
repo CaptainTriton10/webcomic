@@ -1,4 +1,4 @@
-import Section from "./Section.tsx";
+import Section from "./Section";
 import styles from "./Comic.module.css"
 
 interface propTypes {

@@ -1,7 +1,7 @@
 import {useNavigate, useParams} from "react-router";
-import NotFoundView from "./NotFoundView.tsx";
+import NotFoundView from "./NotFoundView";
 import styles from "./ComicPage.module.css"
-import Comic from "../components/Comic.tsx";
+import Comic from "../components/Comic";
 
 function ComicPage() {
     const {id} = useParams() as { id: string };

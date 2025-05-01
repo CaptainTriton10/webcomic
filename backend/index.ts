@@ -2,8 +2,9 @@
 
 import Redis from "ioredis";
 import express from "express";
-import cors from "cors"; 
+import cors from "cors";
 import dotenv from "dotenv";
+import path from "path";
 
 dotenv.config();
 
@@ -12,21 +13,26 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const port = 3000;
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
+const port = 3000;
 const client = new Redis({
     host: process.env.REDIS_HOST,
     port: Number(process.env.REDIS_PORT),
     password: process.env.REDIS_PASSWORD
 });
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
+});
+
 // Get all chapters
 app.get("/chapters/all", async (_req, res) => {
     try {
-        const keys = await client.keys("*");    
+        const keys = await client.keys("*");
         res.json(keys);
 
-    } catch(err) {
+    } catch (err) {
 
         res.json(err);
     }
@@ -42,7 +48,7 @@ app.get("/chapters/:key", async (req, res) => {
         res.json(value);
         console.log(value);
 
-    } catch(err) {
+    } catch (err) {
 
         res.json(err);
     }

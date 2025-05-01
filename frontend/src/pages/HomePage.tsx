@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import styles from "./HomePage.module.css";
-import Section from "../components/Section.tsx";
+import Section from "../components/Section";
 
 async function GetAllChapters() {
     const value = await fetch("http://localhost:3000/chapters/all", {
