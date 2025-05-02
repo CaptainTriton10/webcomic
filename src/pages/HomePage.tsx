@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import styles from "./HomePage.module.css";
-import Section from "../components/Section";
+import Section from "../components/Section.tsx";
 
 async function GetAllChapters() {
-    const value = await fetch("http://localhost:3000/chapters/all", {
-        mode: "cors",
+    const value = await fetch("/api/chapters/all", {
         method: "GET"
     });
 
@@ -28,12 +27,12 @@ function HomePage() {
     }, []);
 
     return (
-        <div style={{backgroundColor: "black"}}>
+        <div style={{ backgroundColor: "black" }}>
             <div>
                 <img
                     className={styles.headerImage}
                     src={`https://picsum.photos/${imgWidth}/${imgHeight}`}
-                    alt="placeholder"/>
+                    alt="placeholder" />
                 <h1 className={styles.title}>sample text</h1>
             </div>
             <div className={styles.main}>

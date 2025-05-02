@@ -5,7 +5,6 @@ import express from "express";
 import cors from "cors";
 import serverless from "serverless-http";
 import dotenv from "dotenv";
-import path from "path";
 
 dotenv.config();
 
@@ -14,9 +13,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
-
-const port = 3000;
 const client = new Redis({
     host: process.env.REDIS_HOST,
     port: Number(process.env.REDIS_PORT),
