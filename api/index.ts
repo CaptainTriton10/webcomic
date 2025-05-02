@@ -2,7 +2,8 @@
 
 import Redis from "ioredis";
 import express from "express";
-import cors from "cors"; 
+import cors from "cors";
+import serverless from "serverless-http";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -20,13 +21,25 @@ const client = new Redis({
     password: process.env.REDIS_PASSWORD
 });
 
+client.on('connect', () => {
+    console.log('Connected to Redis');
+});
+
+client.on('error', (err) => {
+    console.error('Error connecting to Redis:', err);
+});
+
 // Get all chapters
 app.get("/chapters/all", async (_req, res) => {
+
+    console.log("attempting to access /chapters/all\n", res);
+
     try {
-        const keys = await client.keys("*");    
+        const keys = await client.keys("*");
+
         res.json(keys);
 
-    } catch(err) {
+    } catch (err) {
 
         res.json(err);
     }
@@ -42,13 +55,15 @@ app.get("/chapters/:key", async (req, res) => {
         res.json(value);
         console.log(value);
 
-    } catch(err) {
+    } catch (err) {
 
         res.json(err);
     }
 
 })
 
-app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
-});
+// app.listen(port, () => {
+//     console.log(`Server running on http://localhost:${port}`);
+// });
+
+export default serverless(app);
